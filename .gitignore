@@ -1,0 +1,26 @@
+# Binaries
+*.exe
+*.out
+
+# DB files 
+*.db
+*.sqlite
+*.sqlite3
+
+# Go build
+/bin/
+/build/
+
+# Env
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Wire generated
+wire_gen.go
