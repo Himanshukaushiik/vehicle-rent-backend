@@ -10,4 +10,11 @@ type VehicleRepository interface {
 	DeleteVehicle(v *models.Vehicle) error
 }
 
+type VehicleService interface {
+	CreateVehicle(vehicle *models.Vehicle) error
+	GetVehicles() ([]models.Vehicle, error)
+	GetVehicleByID(id string) (models.Vehicle, error)
+	DeleteVehicle(vehicle *models.Vehicle) error
+}
+
 //Interface = system ka contract

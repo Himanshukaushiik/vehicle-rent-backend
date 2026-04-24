@@ -5,17 +5,18 @@ import (
 	"awesomeProject1/models"
 )
 
-type RentService struct {
+type rentService struct {
 	repo domain.RentRepository
 }
 
-func NewRentService(r domain.RentRepository) *RentService {
-	return &RentService{repo: r}
+func NewRentService(r domain.RentRepository) domain.RentService {
+	return &rentService{repo: r}
 }
-func (s *RentService) CreateRent(r *models.Rent) error {
+
+func (s *rentService) CreateRent(r *models.Rent) error {
 	return s.repo.CreateRent(r)
 }
 
-func (s *RentService) GetAllRent() ([]models.Rent, error) {
+func (s *rentService) GetAllRent() ([]models.Rent, error) {
 	return s.repo.GetAllRent()
 }

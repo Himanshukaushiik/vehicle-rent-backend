@@ -5,28 +5,25 @@ import (
 	"awesomeProject1/models"
 )
 
-type VehicleService struct {
+type vehicleService struct {
 	repo domain.VehicleRepository
 }
 
-func NewVehicleService(r domain.VehicleRepository) *VehicleService {
-	return &VehicleService{repo: r}
+func NewVehicleService(r domain.VehicleRepository) domain.VehicleService {
+	return &vehicleService{repo: r}
 }
 
-func (s *VehicleService) CreateVehicle(v *models.Vehicle) error {
+func (s *vehicleService) CreateVehicle(v *models.Vehicle) error {
 	return s.repo.CreateVehicle(v)
 }
-func (s *VehicleService) GetVehicle() ([]models.Vehicle, error) {
+func (s *vehicleService) GetVehicles() ([]models.Vehicle, error) {
 	return s.repo.GetVehicles()
 }
 
-func (s *VehicleService) GetVehicleById(id string) (models.Vehicle, error) {
+func (s *vehicleService) GetVehicleByID(id string) (models.Vehicle, error) {
 	return s.repo.GetVehicleByID(id)
 }
 
-func (s *VehicleService) UpdateVehicle(v *models.Vehicle) error {
-	return s.repo.UpdateVehicle(v)
-}
-func (s *VehicleService) DeleteVehicle(v *models.Vehicle) error {
+func (s *vehicleService) DeleteVehicle(v *models.Vehicle) error {
 	return s.repo.DeleteVehicle(v)
 }

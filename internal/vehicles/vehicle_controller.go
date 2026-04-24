@@ -1,6 +1,7 @@
 package vehicles
 
 import (
+	"awesomeProject1/internal/domain"
 	"awesomeProject1/models"
 	"net/http"
 
@@ -8,12 +9,12 @@ import (
 )
 
 type VehicleController struct {
-	service *VehicleService
+	service domain.VehicleService
 }
 
-func NewVehicleController(service *VehicleService) *VehicleController {
+func NewVehicleController(s domain.VehicleService) *VehicleController {
 	return &VehicleController{
-		service: service,
+		service: s,
 	}
 }
 
@@ -41,7 +42,7 @@ func (vc *VehicleController) CreateVehicle(c *gin.Context) {
 // GET ALL
 
 func (vc *VehicleController) GetVehicles(c *gin.Context) {
-	vehicles, err := vc.service.GetVehicle()
+	vehicles, err := vc.service.GetVehicles()
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -56,7 +57,7 @@ func (vc *VehicleController) GetVehicles(c *gin.Context) {
 func (vc *VehicleController) GetVehicleById(c *gin.Context) {
 	id := c.Param("id")
 
-	vehicle, err := vc.service.GetVehicleById(id)
+	vehicle, err := vc.service.GetVehicleByID(id)
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "vehicle not found"})
 		return
@@ -71,7 +72,7 @@ func (vc *VehicleController) GetVehicleById(c *gin.Context) {
 func (vc *VehicleController) DeleteVehicle(c *gin.Context) {
 	id := c.Param("id")
 
-	vehicle, err := vc.service.GetVehicleById(id)
+	vehicle, err := vc.service.GetVehicleByID(id)
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "vehicle not found"})
 		return

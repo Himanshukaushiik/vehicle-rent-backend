@@ -2,6 +2,9 @@ package main
 
 import (
 	"awesomeProject1/config"
+	"awesomeProject1/internal/rent"
+	"awesomeProject1/internal/user"
+	"awesomeProject1/internal/vehicles"
 	"awesomeProject1/models"
 	"awesomeProject1/routes"
 
@@ -12,9 +15,10 @@ func main() {
 	r := gin.Default()
 	config.ConnectDB()
 
-	vc := InitializeVehicleController()
-	rc := InitializeRentController()
-	uc := InitializeUserController()
+	vc := vehicles.InitializeVehicleController()
+	rc := rent.InitializeRentController()
+	uc := user.InitializeUserController()
+
 	routes.SetupRoutes(r, vc, rc, uc)
 
 	config.DB.AutoMigrate(

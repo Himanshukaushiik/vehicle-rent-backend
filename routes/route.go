@@ -21,7 +21,7 @@ func SetupRoutes(r *gin.Engine, vc *vehicles.VehicleController, rc *rent.RentCon
 		vehiclesGroup.DELETE("/:id", vc.DeleteVehicle)
 
 		rentGroup.POST("/", rc.CreateRent)
-		rentGroup.GET("/", rc.GetAllRent)
+		rentGroup.GET("/", rc.GetAllRents)
 
 		usersGroup.POST("/", uc.CreateUser)
 		usersGroup.GET("/", uc.GetAllUsers)

@@ -1,6 +1,7 @@
 package user
 
 import (
+	"awesomeProject1/internal/domain"
 	"awesomeProject1/models"
 	"net/http"
 
@@ -8,10 +9,10 @@ import (
 )
 
 type UserController struct {
-	service *UserService
+	service domain.UserService
 }
 
-func NewUserController(s *UserService) *UserController {
+func NewUserController(s domain.UserService) *UserController {
 	return &UserController{service: s}
 }
 
@@ -48,7 +49,7 @@ func (uc *UserController) DeleteUser(c *gin.Context) {
 	id := c.Param("id")
 
 	var user models.User
-	user.ID = parseID(id) // helper bana le niche
+	user.ID = parseID(id)
 
 	if err := uc.service.DeleteUser(&user); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})

@@ -8,3 +8,10 @@ type UserRepository interface {
 	DeleteUser(user *models.User) error
 	UpdateUser(user *models.User) error
 }
+
+type UserService interface {
+	CreateUser(user *models.User) error
+	GetAllUsers() ([]models.User, error)
+	DeleteUser(user *models.User) error
+	UpdateUser(user *models.User) error
+}
