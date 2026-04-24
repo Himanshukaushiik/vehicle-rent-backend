@@ -1,26 +1,41 @@
+# ----------------------
 # Binaries
+# ----------------------
 *.exe
 *.out
 
-# DB files 
+# ----------------------
+# Database files
+# ----------------------
 *.db
 *.sqlite
 *.sqlite3
 
-# Go build
+# ----------------------
+# Go build folders
+# ----------------------
 /bin/
 /build/
 
-# Env
+# ----------------------
+# Environment files
+# ----------------------
 .env
 
-# IDE
+# ----------------------
+# IDE files
+# ----------------------
 .vscode/
 .idea/
 
-# OS
+# ----------------------
+# OS files
+# ----------------------
 .DS_Store
 Thumbs.db
 
-# Wire generated
-wire_gen.go
+# ----------------------
+# Wire (IMPORTANT)
+# ----------------------
+# wire_gen.go ignore mat karo ❌
+# (isliye yaha kuch nahi likha)

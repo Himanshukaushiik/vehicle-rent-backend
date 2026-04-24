@@ -13,6 +13,7 @@ import (
 
 func main() {
 	r := gin.Default()
+
 	config.ConnectDB()
 
 	vc := vehicles.InitializeVehicleController()
